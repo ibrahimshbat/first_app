@@ -7,61 +7,151 @@
           ));
         }
 
-        class Home extends StatelessWidget {
+        class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+          int counter = 0;
+          List<String> names=[
+            "Ibrahim Elsanosi",
+            "Jack Deverson",
+            "Alex Turmball",
+            "Ciaran Mavel"
+          ];
           @override
           Widget build(BuildContext context) {
             return Scaffold(
                 appBar: AppBar(
-                  title: Text("Great Teaching ToolKit"),
+                  title: Text("Learning Flutter"),
                   centerTitle: true,
                   backgroundColor: Colors.green[500],
                 ),
-                body: Row(
+            body: Column(
                   children: <Widget>[
-                    Expanded(
-                        flex: 4,
-                        child: Image.asset("asset/ebe-logo-dark.png")
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                              child: Image.asset("assets/ebelogo.png")
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            padding: EdgeInsets.all(40.0),
+                            child: Text("1"),
+                            color: Colors.amber,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            padding: EdgeInsets.all(30.0),
+                            child: Text("2"),
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 4,
+                          child: Container(
+                            padding: EdgeInsets.all(30.0),
+                            child: Text("3"),
+                            color: Colors.lightBlue,
+                          ),
+                        ),
+                      ],
                     ),
-                Expanded(
-                  flex: 4,
-                  child: Container(
-                    child: Image.asset("asset/ebe-logo-dark.png")
-                  ),
-                ),
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        padding: EdgeInsets.all(40.0),
-                        child: Text("1"),
-                        color: Colors.amber,
+                    SizedBox(height: 50,),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.mail,
+                          color: Colors.pink,
+                          size: 24.0,
+                          semanticLabel: 'Text to announce in accessibility modes',
+                        ),
+                        Icon(
+                          Icons.access_alarm,
+                          color: Colors.black,
+                          size: 24.0,
+                          semanticLabel: 'Text to announce in accessibility modes',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 50,),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.mail,
+                          color: Colors.blueGrey,
+                          size: 24.0,
+                          semanticLabel: 'Text to announce in accessibility modes',
+                        ),
+                        Icon(
+                          Icons.alternate_email,
+                          color: Colors.amber,
+                          size: 24.0,
+                          semanticLabel: 'Text to announce in accessibility modes',
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 50,),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "Evidencebased Education",
+                          style: TextStyle(
+                            fontSize: 30,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text(
+                          "Count=$counter",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: names.map((name)=>
+                          Text(name)).toList(),
+                    ),
+                    RaisedButton(
+                      onPressed: (){
+                        setState(() {
+                          counter--;
+                        });
+
+                      },
+                      child: Text(
+                        "-",
                       ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        padding: EdgeInsets.all(30.0),
-                        child: Text("2"),
-                        color: Colors.redAccent,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 4,
-                      child: Container(
-                        padding: EdgeInsets.all(30.0),
-                        child: Text("3"),
-                        color: Colors.lightBlue,
-                      ),
-                    ),
+                      color: Colors.green,
+                    )
                   ],
                 ),
                floatingActionButton: FloatingActionButton(
-                  onPressed: () {},
-                  child: Text("Submit"),
+                  onPressed: () {
+                   setState(() {
+                     counter++;
+                   });
+                  },
+                 child: Icon(Icons.add,
+                 color: Colors.amber),
                   backgroundColor: Colors.green[600],
-                )
+                ),
             );
           }
-        }
+}
+
         /*
 
   Column(
