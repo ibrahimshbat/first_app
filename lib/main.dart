@@ -1,5 +1,6 @@
         import 'package:flutter/cupertino.dart';
       import 'package:flutter/material.dart';
+      import 'Person.dart';
 
         void main() {
           runApp(MaterialApp(
@@ -14,12 +15,13 @@
 
 class _HomeState extends State<Home> {
           int counter = 0;
-          List<String> names=[
-            "Ibrahim Elsanosi",
-            "Jack Deverson",
-            "Alex Turmball",
-            "Ciaran Mavel"
+          List<Person> people=[
+            Person(name: "Jack Deverson",number: 123),
+            Person(name: "Alex Turmball",number: 456),
+            Person(name: "Ciaran Mavel",number: 789),
+            Person(name: "Ibrahim Elsanosi",number: 000)
           ];
+
           @override
           Widget build(BuildContext context) {
             return Scaffold(
@@ -121,8 +123,8 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     Row(
-                      children: names.map((name)=>
-                          Text(name)).toList(),
+                      children: people.map((person)=>
+                          Text('${person.name} - ${person.number}')).toList(),
                     ),
                     RaisedButton(
                       onPressed: (){
