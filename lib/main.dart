@@ -16,10 +16,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int counter = 0;
   List<Person> people = [
-    new Person(name: "Jack Deverson", number: 123),
-    new Person(name: "Alex Turmball", number: 456),
-    new Person(name: "Ciaran Mavel", number: 789),
-    new Person(name: "Ibrahim Elsanosi", number: 000)
+    new Person(name: "Jack Deverson", number: "123"),
+    new Person(name: "Alex Turmball", number: "456"),
+    new Person(name: "Ciarand Mavel", number: "789"),
   ];
 
   @override
@@ -129,7 +128,7 @@ class _HomeState extends State<Home> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: people
-                .map((person) => Text('${person.name} - ${person.number}'))
+                .map((person) => PersonCard(person:person))
                 .toList(),
           ),
           RaisedButton(
@@ -155,6 +154,42 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.green[600],
       ),
     );
+  }
+}
+
+class PersonCard extends StatelessWidget {
+  final Person person;
+  PersonCard({this.person});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              person.name,
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 12,),
+            Text(
+              person.number,
+              style: TextStyle(
+                fontSize: 10,
+                color: Colors.black,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+          ],
+          ),
+      )
+      );
   }
 }
 

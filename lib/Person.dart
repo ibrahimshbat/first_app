@@ -1,9 +1,9 @@
 class Person{
 
   String name;
-  int number;
+  String number;
 
-  Person ({String name, int number}){
+  Person ({String name, String number}){
     this.name = name;
     this.number = number;
   }
