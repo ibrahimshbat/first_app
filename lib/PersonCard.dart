@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'Person.dart';
 class PersonCard extends StatelessWidget {
   Person person;
-  PersonCard({this.person});
+  Function delete;
+  PersonCard({this.person, this.delete});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,12 @@ class PersonCard extends StatelessWidget {
                   fontWeight: FontWeight.normal,
                 ),
               ),
+              SizedBox(height: 10,),
+              FlatButton.icon(
+                onPressed: delete,
+                label: Text("Delete Card"),
+                icon: Icon(Icons.delete),
+              )
             ],
           ),
         )

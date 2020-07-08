@@ -129,7 +129,13 @@ class _HomeState extends State<Home> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: people
-                .map((person) => PersonCard(person:person))
+                .map((person) => PersonCard(
+                person:person,
+                delete: (){
+                  setState(() {
+                    people.remove(person);
+                  });
+                }))
                 .toList(),
           ),
           RaisedButton(
